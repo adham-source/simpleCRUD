@@ -1,0 +1,275 @@
+:root {
+  --accent-color: #5f27cd;
+  --accent-color-hover: #5f27cd;
+  --primary-color: #341f97dd;
+  --disabled-color: #2e86de;
+  --dark-color: #222f3e;
+  --light-color: #ddd;
+  --danger-color: #ff6b6b;
+  --content-color: #c8d6e5dd;
+  --border-radius: .5rem;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body::before {
+  content: "";
+  min-height: 100vh;
+  filter: grayscale();
+}
+
+body {
+  font-family: "Ubuntu", sans-serif;
+  /* background: center center / cover url(../images/background.png) no-repeat; */
+}
+
+h1 {
+  font-family: "Limelight", cursive;
+  margin: 2rem;
+  color: var(--light-color);
+  text-shadow: 2px 2px 4px var(--dark-color);
+}
+
+.main-color {
+  background-color: var(--primary-color);
+}
+
+.container_inner {
+  height: 100vh;
+  display: flex;
+  flex-flow: column;
+}
+
+.content {
+  flex: 1;
+  max-width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+header {
+  background-color: var(--primary-color);
+  border-bottom: 1px solid var(--light-color);
+}
+
+header ul li a {
+  color: var(--light-color);
+  text-decoration: none;
+}
+
+header ul {
+  display: flex;
+  flex-direction: row nowrap;
+  justify-content: flex-end;
+  list-style-type: none;
+}
+
+header ul li {
+  padding: 1rem;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  background-color: var(--primary-color);
+  border-top: 1px solid var(--light-color);
+}
+
+footer p {
+  color: var(--light-color);
+  padding: 1rem;
+}
+
+.center {
+  text-align: center;
+}
+
+.form-control {
+  border: 1px solid var(--dark-color);
+  border-radius: 6px;
+  padding: 0.7rem;
+  margin: 0.3rem;
+}
+
+.btn {
+  border: 1px solid #eee;
+  border-radius: 6px;
+  padding: 0.7rem;
+  cursor: pointer;
+  background-color: var(--primary-color);
+  color: #eee;
+}
+
+.btn:hover {
+  background-color: var(--accent-color);
+}
+
+.fas,
+.far {
+  padding: 0.5rem;
+}
+
+.fa-trash-alt:hover {
+  color: var(--danger-color);
+  cursor: pointer;
+}
+.fa-edit:hover {
+  color: var(--accent-color);
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-color);
+}
+
+#sale {
+  display: grid;
+  grid:
+    "form form form form" 4rem
+    "table table table table" 1fr
+    ". . . bottom" minmax(min-content, max-content)
+    / 1fr 1fr minmax(min-content, max-content);
+}
+
+form {
+  display: flex;
+  flex-flow: row nowrap;
+  background-color: var(--primary-color);
+  margin-bottom: 0.5rem;
+  grid-area: form;
+}
+
+.table {
+  width: 100%;
+  table-layout: fixed;
+  border-spacing: 0rem 1rem;
+  border-collapse: collapse;
+  grid-area: table; 
+}
+
+.amount {
+  margin-top: 0.5rem;
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  text-align: right;
+  padding: 1rem;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+}
+
+.title,
+.values {
+  padding: 0.5rem;
+}
+
+.table-right {
+  text-align: right;
+}
+
+.table-center {
+  text-align: center;
+}
+
+.item-picture {
+  height: 3rem;
+  width: 3rem;
+  border-radius: 0.75rem;
+  border: 2px solid var(--light-color);
+  box-shadow: 1px 1px 4px var(--dark-color);
+  margin: 0.25rem;
+}
+
+table .form-content_action form {
+  background-color: initial;
+  display: initial;
+  flex-flow: initial;
+  margin-bottom: initial;
+  grid-area: initial;
+}
+
+.bottom {
+  display: flex;
+  grid-area: bottom;
+  flex-direction: column;
+}
+
+.amount p {
+  padding: 0.3rem;
+}
+
+.amount p {
+  padding: 0.3rem;
+}
+
+.amount .title p:nth-child(3) {
+  margin-bottom: 0.4rem;
+}
+
+.amount .values p:nth-child(3) {
+  margin-top: 0.2rem;
+  border-bottom: 1px solid var(--light-color);
+  margin-bottom: 0.2rem;
+}
+
+.amount .title p:nth-child(4) {
+  font-weight: bold;
+}
+
+.amount .values p:nth-child(4) {
+  font-weight: bold;
+}
+
+.bottom form input {
+  width: 100%;
+}
+
+#error {
+  padding: 1rem;
+  border: 3px solid var(--dark-color);
+  background-color: var(--accent-color);
+  color: var(--light-color);
+  border-radius: 5px;
+}
+
+button {
+  background-color: initial;
+  border: initial;
+  color: initial;
+  outline: initial;
+}
+
+/* Style CSS Modal */
+.add-item-form {
+  background-color: var(--accent-color);
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  color: var(--light-color);
+  border-radius: var(--border-radius);
+}
+
+.form-btn {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: .5rem;
+}
+
+/* Style CSS Image of modal */
+.model-image {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: .5rem;
+}

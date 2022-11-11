@@ -1,0 +1,55 @@
+extends layouts/main.pug
+block content
+  section(class="table-responsive my-3")
+    //- Add item
+    form(action=`/items`, class="bg-transparent", method="POST")
+      button(type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target=`#addItem`) Add New Item
+      //- Modal 
+      div(class="modal fade" id=`addItem` tabindex="-1" aria-labelledby=`addItemLabel` aria-hidden="true")
+        div(class="modal-dialog modal-dialog-centered")
+            div(class="modal-content main-color")
+                div(class="modal-header d-flex align-items-center py-0 px-2 border-bottom border-white border-2")
+                    h1(class="modal-title text-white text-center fs-5 mx-2 my-2" id=`addItemLabel`) Ajout d'un produit 
+                    button(type="button" class="btn-close mx-2" data-bs-dismiss="modal" aria-label="Close")
+                div(class="modal-body text-white text-start pt-2 my-1")
+                  div(class="model-image")
+                    div()
+                      label(for="image", class="position-absolute") 
+                      input(
+                        type="file", 
+                        class="filepond mt-2" 
+                        name="image_url",
+                        id="image",
+                        accept="image/png, image/jpeg, image/jpg"
+                      )/
+                    div(class="mt-2")
+                        div 
+                          label(for="sku", class="form-label") SKU
+                          input(type="text", class="form-control",  name="sku", id="sku", placeholder="Generate Auto" disabled)/
+                        div 
+                          label(for="prix", class="form-label") Prix
+                          input(type="text", class="form-control", name="sale_price",  id="prix")/
+                  div(class="mb-2")
+                      label(for="marque", class="form-label") Marque
+                      input(type="text", class="form-control", name="brand", id="marque")/
+                  div(class="mb-2") 
+                      label(for="nom", class="form-label") Nom
+                      input(type="text", class="form-control", name="name",  id="nom")/
+                  div(class="mb-0")
+                      label(for="description", class="form-label") Description
+                      textarea(class="form-control", class="form-control", name="description", rows="3", id="description")
+                div(class="modal-footer border-top-0 py-1 mb-1 px-2")
+                  button(type="submit" class="btn btn-primary") Add
+                  button(type="button" class="btn btn-primary" data-bs-dismiss="modal") Annuler
+    table(class="table table-striped align-middle mt-2")
+        thead(class="table-dark table-center")
+          tr
+            th(scope="col") Image
+            th(scope="col") Sku
+            th(scope="col") Qté
+            th(scope="col") Nom
+            th(scope="col") Prix
+            th(scope="col") Montant
+        tbody
+          each item in items
+            include includes/item

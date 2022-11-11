@@ -1,0 +1,25 @@
+.filepond--drop-label {
+	color: #4c4e53;
+}
+
+.filepond--label-action {
+	text-decoration-color: #babdc0;
+}
+
+.filepond--panel-root {
+	background-color: #edf0f4;
+}
+
+.filepond--root {
+    margin-bottom: 0;
+    
+}
+
+.filepond--root .filepond--credits {
+   visibility: hidden;
+   display: none;
+}
+
+.filepond--root > .filepond--panel {
+    z-index: 2;
+}

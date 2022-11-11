@@ -1,0 +1,67 @@
+if item
+  tr(id=`SKU${item.sku}`)
+    td(class="table-center")
+      img(src=`${item.imagePath}`, class="item-picture", alt="Image item", srcset="")/
+    td(class="table-center")= item.sku
+    td(class="table-center")= item.brand 
+    td(class="table-center")= item.name
+    td(class="table-center") #{ item.sale_price.toFixed(2) } $
+    td(class="table-center form-content_action")
+      //- Edit item using id
+      form(action=`/items/${item.id}?_method=PUT`, method="POST")
+        button(type="button" class="fas fa-edit" data-bs-toggle="modal" data-bs-target=`#editItem${item.sku}`)
+        //- Modal 
+        div(class="modal fade" id=`editItem${item.sku}` tabindex="-1" aria-labelledby=`editItemLabel${item.sku}` aria-hidden="true")
+          div(class="modal-dialog modal-dialog-centered")
+            div(class="modal-content main-color")
+              div(class="modal-header d-flex align-items-center py-0 px-2 border-bottom border-white border-2")
+                h1(class="modal-title text-white text-center fs-5 mx-2 my-2" id=`editItemLabel${item.sku}`) Modification d'un produit
+                button(type="button" class="btn-close mx-2" data-bs-dismiss="modal" aria-label="Close")
+              
+              div(class="modal-body text-white text-start pt-2 my-1")
+                div(class="model-image")
+                  div(class="position-relative")
+                    label(for=`image${item.sku}`, class="position-fixed") 
+                    input(
+                      type="file", 
+                      class="filepond mt-2" 
+                      name="image_url",
+                      id=`image${item.sku}`,
+                      accept="image/png, image/jpeg, image/jpg"
+                    )/
+                  div(class="mt-2")
+                    div 
+                      label(for="sku", class="form-label") SKU
+                      input(type="text", class="form-control",  name="sku", value=`${item.sku}`, id="sku", disabled)/
+                    div 
+                      label(for="prix", class="form-label") Prix
+                      input(type="text", class="form-control", name="sale_price", value=`${item.sale_price}`, id="prix")/
+                div(class="mb-2")
+                  label(for="marque", class="form-label") Marque
+                  input(type="text", class="form-control", name="brand", value=`${item.brand}`, id="marque")/
+                div(class="mb-2") 
+                  label(for="nom", class="form-label") Nom
+                  input(type="text", class="form-control", name="name", value=`${item.name}`, id="nom")/
+                div(class="mb-0")
+                  label(for="description", class="form-label") Description
+                  textarea(class="form-control", class="form-control", name="description", rows="3", id="description")=`${item.description}`
+              div(class="modal-footer border-top-0 py-1 mb-1 px-2")
+                button(type="submit" class="btn btn-primary") Confirmer
+                button(type="button" class="btn btn-primary" data-bs-dismiss="modal") Annuler
+      //- Delete Item using id  
+      form(action=`/items/${item.id}?_method=DELETE`, method="POST") 
+        button(type="button" class="far fa-trash-alt" data-bs-toggle="modal" data-bs-target=`#deleteItem${item.sku}`)
+        //- Modal 
+        div(class="modal fade" id=`deleteItem${item.sku}` tabindex="-1" aria-labelledby=`deleteItemLabel${item.sku}` aria-hidden="true")
+          div(class="modal-dialog modal-dialog-centered")
+            div(class="modal-content main-color text-white")
+              div(class="modal-header d-flex justify-content-between py-0 px-2 border-bottom border-white border-2")
+                h1(class="modal-title text-white fs-5 mx-2 my-2" id=`deleteItemLabel${item.sku}`) Are you sure to delete this item?
+                button(type="button" class="btn-close mx-2" data-bs-dismiss="modal" aria-label="Close")
+              div(class="modal-body")
+                p() Name: #{item.name}
+                p() Sku: #{item.sku} 
+                p() Nom: #{item.brand}
+              div(class="modal-footer  border-top-0 py-1 mb-1 px-2")
+                button(type="button" class="btn btn-primary" data-bs-dismiss="modal") Cancel
+                button(type="submit" class="btn btn-primary") Delete
